@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import {
   Shield, CheckCircle, Fingerprint, Award, FileText,
   ShieldAlert, Home, Phone, Star, Mail, MapPin, Search,
-  Compass, BadgeAlert, ArrowUpRight, Scale, BookOpen, Clock, AlertTriangle, AlertCircle, Camera
+  Compass, BadgeAlert, ArrowUpRight, Scale, BookOpen, Clock, AlertTriangle, AlertCircle
 } from 'lucide-react';
 
 import { Header } from './components/Header';
@@ -19,22 +19,6 @@ import { ServiceItem } from './types';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('hero');
-  const [avatarSrc, setAvatarSrc] = useState<string>(() => {
-    return localStorage.getItem('yash_gupta_avatar') || '/yash_gupta.png';
-  });
-
-  const handleAvatarUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const base64String = reader.result as string;
-        localStorage.setItem('yash_gupta_avatar', base64String);
-        setAvatarSrc(base64String);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
 
   const [selectedCategory, setSelectedCategory] = useState('aadhaar');
   const [searchQuery, setSearchQuery] = useState('');
@@ -353,43 +337,16 @@ export default function App() {
             {/* Image Column */}
             <div className="lg:col-span-5">
               <div className="relative border-2 border-white/10 rounded-lg p-2.5 bg-white bg-opacity-5 max-w-sm mx-auto shadow-2xl overflow-hidden aspect-4/5">
-                <input
-                  type="file"
-                  onChange={handleAvatarUpload}
-                  accept="image/*"
-                  className="hidden"
-                  id="avatar-input"
-                />
                 <img
-                  src={avatarSrc}
+                  src="https://raw.githubusercontent.com/rahul76512/SUVIDHA-DOCUMENTS/718d190909ab13d3bb632bbab4ccabc96d63761f/yash_gupta.png"
                   alt="Advocate Yash Gupta professional legal consulting represent"
                   onError={(e) => {
                     const img = e.target as HTMLImageElement;
-                    // Try progressive local extensions before falling back to stock image
-                    if (img.src.endsWith('/yash_gupta.png')) {
-                      img.src = '/yash_gupta.jpg';
-                    } else if (img.src.endsWith('/yash_gupta.jpg')) {
-                      img.src = '/yash_gupta.jpeg';
-                    } else {
-                      img.src = "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80&w=1200";
-                    }
+                    img.src = "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80&w=1200";
                   }}
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover rounded-sm transition-all duration-300"
                 />
-                
-                {/* Click / Hover to upload photo overlay */}
-                <label 
-                  htmlFor="avatar-input" 
-                  className="absolute inset-0 cursor-pointer group flex items-center justify-center bg-black/0 hover:bg-black/60 transition-all duration-300 rounded-sm"
-                  title="Click to update professional portrait"
-                >
-                  <div className="text-white text-center opacity-0 group-hover:opacity-100 transform translate-y-3 group-hover:translate-y-0 transition-all duration-300 pointer-events-none p-4">
-                    <Camera className="w-8 h-8 mx-auto mb-2 text-brand-secondary filter drop-shadow" />
-                    <p className="font-serif text-sm font-bold">Update Legal Portrait</p>
-                    <p className="text-[10px] text-gray-300 mt-1">Select your professional photo</p>
-                  </div>
-                </label>
                 
                 <div className="absolute right-4 bottom-4 bg-brand-secondary text-white py-2 px-4 shadow-md rounded-xs pointer-events-none z-10">
                   <p className="font-serif text-sm font-black text-center">Adv. Yash Gupta</p>
