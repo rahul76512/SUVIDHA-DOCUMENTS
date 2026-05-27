@@ -1,0 +1,6 @@
+{
+  "name": "Suvidha Documents",
+  "description": "Premium documentation and legal services by Advocate Yash Gupta in Dwarka, Delhi. Rent agreements, affidavits, certificates, Aadhaar and passport assistance.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

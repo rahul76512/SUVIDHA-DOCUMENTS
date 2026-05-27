@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: "Playfair Display", Georgia, Cambria, serif;
+  
+  --color-brand-primary: #002045;
+  --color-brand-secondary: #775a19;
+  --color-brand-background: #f9f9ff;
+  --color-brand-surface: #ffffff;
+}
+
+/* Custom micro-animations and scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+.gradient-hero {
+  background: linear-gradient(135deg, rgba(0, 32, 69, 0.95) 0%, rgba(0, 20, 45, 0.9) 100%);
+}
+
+.legal-card {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.legal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 12px 30px rgba(0, 32, 69, 0.08);
+}
+
