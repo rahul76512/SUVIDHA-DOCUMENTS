@@ -338,11 +338,18 @@ export default function App() {
             <div className="lg:col-span-5">
               <div className="relative border-2 border-white/10 rounded-lg p-2.5 bg-white bg-opacity-5 max-w-sm mx-auto shadow-2xl overflow-hidden aspect-4/5">
                 <img
-                  src="https://raw.githubusercontent.com/rahul76512/SUVIDHA-DOCUMENTS/718d190909ab13d3bb632bbab4ccabc96d63761f/yash_gupta.png"
+                  src="/yash_gupta.png"
                   alt="Advocate Yash Gupta professional legal consulting represent"
                   onError={(e) => {
                     const img = e.target as HTMLImageElement;
-                    img.src = "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80&w=1200";
+                    const cleanSrc = img.src.toLowerCase();
+                    if (cleanSrc.endsWith('/yash_gupta.png')) {
+                      // If local public image is not uploaded yet, try the GitHub URL
+                      img.src = "https://raw.githubusercontent.com/rahul76512/SUVIDHA-DOCUMENTS/718d190909ab13d3bb632bbab4ccabc96d63761f/yash_gupta.png";
+                    } else if (cleanSrc.includes('githubusercontent.com')) {
+                      // If GitHub raw link fails (e.g. repository is private), use stock photo
+                      img.src = "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80&w=1200";
+                    }
                   }}
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover rounded-sm transition-all duration-300"
